@@ -26,6 +26,11 @@ Whoami: ${USER}
 I'm using $TERM
 ```
 
+Motivation
+-----
+
+I need to make config files more dynamic using environment variables. In a docker environment this is a big issue for me.
+
 Contribution
 -----
 
