@@ -5,7 +5,7 @@ Expenv replaces ${var} or $var in the input to the values of the current environ
 Usage
 -----
 ```bash
-$ go get github.com/blang/semver
+$ go get github.com/blang/expenv
 $ $GOPATH/bin/expenv -f inputfile
 ```
 
