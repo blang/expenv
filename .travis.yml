@@ -1,0 +1,16 @@
+language: go
+go:
+  - 1.3
+install:
+  - "go get -d -v ./..."
+  - "go build -v ./..."
+deploy:
+  provider: releases
+  api_key:
+    secure: jSzG2F1Lt+dA5m2ZTEcm1PEz6colCYA10HUKmWzyDgWj6ACoD0U3Uyy7CyAmwhPPx38CaTgImEAV3qY3+lcPMZUumTL9utOSuaXsTzA5Z/XwCA9Gy6nMsavFaQxxQ7f9Jqr0R4UgbWHArBmmiMq3pjhe+vlKNH+Q4r74nfRawdI=
+  file: "expenv"
+  skip_cleanup: true
+  on:
+    repo: blang/expenv
+    tags: true
+    all_branches: true
