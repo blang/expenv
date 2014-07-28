@@ -1,4 +1,4 @@
-expenv - Expand environment variables
+expenv - Expand environment variables [![Build Status](https://drone.io/github.com/blang/expenv/status.png)](https://drone.io/github.com/blang/expenv/latest)
 ======
 Expenv replaces ${var} or $var in the input to the values of the current environment variables. Supports stdin/stdout and files.
 
@@ -9,6 +9,7 @@ $ go get github.com/blang/expenv
 $ $GOPATH/bin/expenv -f inputfile
 ```
 
+If you don't want to build it, you might want to download the [ELF x86-64 binary](https://drone.io/github.com/blang/expenv/files/expenv)  build by drone.io.
 
 Examples
 -----
