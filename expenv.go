@@ -7,6 +7,7 @@ import (
 	"io"
 	"io/ioutil"
 	"os"
+	"strings"
 )
 
 func main() {
@@ -68,7 +69,7 @@ func process(r io.Reader, w io.Writer) error {
 	bufr := bufio.NewReader(r)
 	for {
 		line, err := bufr.ReadString('\n')
-		line = os.ExpandEnv(line)
+		line = expandEnv(line)
 		_, writererr := io.WriteString(w, line)
 		if writererr != nil {
 			return err
@@ -129,4 +130,10 @@ func (f fileReplaceWriteCloser) Close() error {
 
 func FileReplaceWriteCloser(f *os.File, replacePath string) io.WriteCloser {
 	return &fileReplaceWriteCloser{f, replacePath}
+}
+
+// Follow os.ExpandEnv's contract except for `$$` which is transformed to `$`
+func expandEnv(s string) string {
+	os.Setenv("EXPENV_DOLLAR", "$")
+	return os.ExpandEnv(strings.Replace(s, "$$", "${EXPENV_DOLLAR}", -1))
 }
