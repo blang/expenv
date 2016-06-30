@@ -23,10 +23,11 @@ $ expenv -i -f inputfile // Replace inplace
 ```
 
 Example input:
-```
+```bash
 My PWD is $PWD
 Whoami: ${USER}
 I'm using $TERM
+Expand $empty but don't expand $$empty # => Expand  but don't expand $empty
 ```
 
 Motivation
