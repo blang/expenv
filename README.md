@@ -23,12 +23,18 @@ $ expenv -i -f inputfile // Replace inplace
 ```
 
 Example input:
-```bash
+```
 My PWD is $PWD
 Whoami: ${USER}
 I'm using $TERM
-Expand $empty but don't expand $$empty # => Expand  but don't expand $empty
+Expand $empty but don't expand $$empty
+Don't expand $(echo empty)
 ```
+
+As mentioned in the above example, two special cases exist:
+
+* `$$` is converted to `$`, allowing you to pass in literal-dollar-signs
+* `$(` is not converted, allowing your input to contain subshell like behaviour
 
 Motivation
 -----
