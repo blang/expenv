@@ -135,5 +135,10 @@ func FileReplaceWriteCloser(f *os.File, replacePath string) io.WriteCloser {
 // Follow os.ExpandEnv's contract except for `$$` which is transformed to `$`
 func expandEnv(s string) string {
 	os.Setenv("EXPENV_DOLLAR", "$")
-	return os.ExpandEnv(strings.Replace(s, "$$", "${EXPENV_DOLLAR}", -1))
+	os.Setenv("EXPENV_PARENTHESIS", "$(")
+
+	s = strings.Replace(s, "$$", "${EXPENV_DOLLAR}", -1)
+	s = strings.Replace(s, "$(", "${EXPENV_PARENTHESIS}", -1)
+
+	return os.ExpandEnv(s)
 }
